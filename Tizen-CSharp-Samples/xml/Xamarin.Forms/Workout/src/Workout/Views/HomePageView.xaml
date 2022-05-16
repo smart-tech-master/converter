@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Workout.Models;assembly=Workout"
+             xmlns:e="clr-namespace:ElottieSharp.Forms;assembly=ElottieSharp.Forms"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Workout.Views.HomePageView">
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <CarouselView VerticalOptions="FillAndExpand"
+                          HorizontalOptions="FillAndExpand"
+                          AbsoluteLayout.LayoutFlags="All"
+                          AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                          IndicatorView="indicatorView"
+                          x:Name="carouselViewControl">
+
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type models:HomePageItemData}">
+                        <models:HomePageItemData Text="History"
+                                                 File="animations/history.json"
+                                                 Index="0">
+                            <models:HomePageItemData.Bounds>
+                                <Rectangle X=".5" Y=".65" Width=".35" Height=".36" />
+                            </models:HomePageItemData.Bounds>
+                        </models:HomePageItemData>
+
+                        <models:HomePageItemData Text="Start running"
+                                                 File="animations/running.json"
+                                                 Index="1">
+                            <models:HomePageItemData.Bounds>
+                                <Rectangle X=".5" Y=".5" Width="1" Height="1" />
+                            </models:HomePageItemData.Bounds>
+                        </models:HomePageItemData>
+
+                        <models:HomePageItemData Text="Settings"
+                                                 File="animations/settings.json"
+                                                 Index="2">
+                            <models:HomePageItemData.Bounds>
+                                <Rectangle X=".5" Y=".65" Width=".35" Height=".36" />
+                            </models:HomePageItemData.Bounds>
+                        </models:HomePageItemData>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout>
+                            <AbsoluteLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.ChangePage, Source={x:Reference Name=carouselViewControl}}"
+                                                      CommandParameter="{Binding Index}" />
+                            </AbsoluteLayout.GestureRecognizers>
+
+                            <Image Source="images/homepage_bg.png"
+                                   AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                            </Image>
+
+                            <e:ElottieAnimationView AbsoluteLayout.LayoutFlags="All"
+                                    AbsoluteLayout.LayoutBounds="{Binding Bounds}"
+                                    AnimationFile="{Binding File}"
+                                    AutoPlay="True"
+                                    AutoRepeat="False" />
+
+                            <Label Text="{Binding Text}"
+                                   FontSize="{StaticResource FontSizeS}"
+                                   TextColor="#F6F6F6"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   AbsoluteLayout.LayoutFlags="All"
+                                   AbsoluteLayout.LayoutBounds="0, 0.31, 1, .1" />
+
+
+                        </AbsoluteLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="indicatorView"
+                            IndicatorColor="Red"
+                            SelectedIndicatorColor="Blue"
+                            HorizontalOptions="Center"
+                            AbsoluteLayout.LayoutFlags="All"
+                            AbsoluteLayout.LayoutBounds="0, 0.1, 1, .1" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+</ContentPage>

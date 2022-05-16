@@ -1,0 +1,12 @@
+﻿<Project Sdk="Tizen.NET.Sdk/1.1.6">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>tizen60</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Tizen.NET.API9" Version="9.0.0.16813" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Tizen.NET.Sdk/1.1.6">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>tizen80</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="lib\**" />
+    <Compile Remove="Port\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <EmbeddedResource Remove="Port\**" />
+    <None Remove="lib\**" />
+    <None Remove="Port\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TextClassification\TextClassification.csproj" />
+  </ItemGroup>
+
+  <!-- If solution already has PCL project, will reference -->
+</Project>
